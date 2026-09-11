@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Culture — Terms of Service</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --paper: #f4f5f1; --surface: #ffffff; --ink: #14181a; --ink-soft: #4b534c;
+    --fairway: #1f4033; --fairway-soft: #dce6de; --line: #d8dcd3;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --display: 'Archivo', system-ui, sans-serif;
+    --body: 'Source Serif 4', Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14181a; --surface: #191f1c; --ink: #f2f3ee; --ink-soft: #b9c0b9;
+      --fairway: #7bbb99; --fairway-soft: #1e2b24; --line: #2a2f2a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--fairway); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
+  nav.top { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 28px; }
+  nav.top a { text-decoration: none; }
+  header.doc-head { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
+  .mark { flex: none; width: 46px; height: 46px; border-radius: 10px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+  .mark svg { width: 22px; height: 22px; }
+  .doc-head h1 { font-family: var(--display); font-weight: 700; font-size: 1.7rem; letter-spacing: -0.01em; margin: 0 0 6px; text-wrap: balance; }
+  .meta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); display: flex; gap: 14px; flex-wrap: wrap; }
+  .summary { background: var(--fairway-soft); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin-bottom: 44px; font-size: 0.95rem; color: var(--ink); }
+  .summary .label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fairway); display: block; margin-bottom: 8px; }
+  section.clause { display: grid; grid-template-columns: 40px 1fr; gap: 18px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+  section.clause:last-of-type { border-bottom: none; }
+  .num { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); padding-top: 3px; }
+  .clause h2 { font-family: var(--display); font-weight: 600; font-size: 1.08rem; margin: 0 0 10px; text-wrap: balance; }
+  .clause p { margin: 0 0 12px; max-width: 62ch; color: var(--ink); }
+  .clause p:last-child { margin-bottom: 0; }
+  footer.doc-foot { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="top"><a href="index.html">&larr; Golf Culture</a></nav>
+
+  <header class="doc-head">
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="20" x2="50" y2="80" stroke="white" stroke-width="6"/>
+        <circle cx="50" cy="80" r="6" fill="white"/>
+        <path d="M50 20 L74 32 L50 44 Z" fill="white"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Golf Culture — Terms of Service</h1>
+      <div class="meta">
+        <span>Effective 11 Sep 2026</span>
+        <span>Version 1.0</span>
+        <span>Applies to the Golf Culture TikTok account &amp; posting tool</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary">
+    <span class="label">Plain English, before the clauses</span>
+    Golf Culture is a one-person project that reposts golf clips to TikTok with
+    the original creator's permission, using a small local tool to process and
+    publish them. It's provided as-is, for that single purpose — not as a
+    general redistribution service for anyone else's content.
+  </div>
+
+  <section class="clause">
+    <div class="num">01</div>
+    <div>
+      <h2>Acceptance of these terms</h2>
+      <p>
+        By operating or using the Golf Culture TikTok account and its posting
+        tool, the operator agrees to these terms. They describe what the
+        service is, how it's allowed to be used, and the limits on it.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="num">02</div>
+    <div>
+      <h2>Description of the service</h2>
+      <p>
+        Golf Culture's tool downloads permitted golf-related video content,
+        cuts it into short vertical clips, adds a title/attribution overlay,
+        and publishes those clips to the Golf Culture TikTok account through
+        TikTok's Content Posting API.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="num">03</div>
+    <div>
+      <h2>Content rights &amp; permission</h2>
+      <p>
+        Every source video used is reposted only with the original creator's
+        explicit, on-record permission. Golf Culture is not a general-purpose
+        reposting tool and is not to be pointed at content the operator does
+        not have permission to use. Attribution to the original creator
+        (channel name and avatar) is shown on every clip.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="num">04</div>
+    <div>
+      <h2>Acceptable use</h2>
+      <p>
+        The tool is built for single-account personal use by its operator. It
+        is not offered as a service to third parties, and output clips are not
+        to be resold or redistributed outside of posting them to the Golf
+        Culture TikTok account.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="num">05</div>
+    <div>
+      <h2>No warranty</h2>
+      <p>
+        The service is provided "as is." No guarantee is made that video
+        processing or posting will be uninterrupted, error-free, or available
+        at all times.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="num">06</div>
+    <div>
+      <h2>Limitation of liability</h2>
+      <p>
+        The operator is not liable for indirect, incidental, or consequential
+        damages arising from use of this tool or the Golf Culture account,
+        to the fullest extent permitted by law.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="num">07</div>
+    <div>
+      <h2>Changes to these terms</h2>
+      <p>
+        If these terms change, this page will be updated and the version
+        number and effective date above will change accordingly.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="num">08</div>
+    <div>
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms can be sent to
+        <a href="mailto:golfculturetiktok@gmail.com">golfculturetiktok@gmail.com</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer class="doc-foot">
+    <span>Golf Culture — Terms of Service</span>
+    <span>Read alongside the <a href="privacy.html">Golf Culture Privacy Policy</a></span>
+  </footer>
+</div>
+</body>
+</html>
