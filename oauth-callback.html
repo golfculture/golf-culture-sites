@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Culture — Authorization</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --paper: #f4f5f1; --surface: #ffffff; --ink: #14181a; --ink-soft: #4b534c;
+    --fairway: #1f4033; --fairway-soft: #dce6de; --line: #d8dcd3;
+    --err: #a13a2c; --err-soft: #f3e2de;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --display: 'Archivo', system-ui, sans-serif;
+    --body: 'Source Serif 4', Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14181a; --surface: #191f1c; --ink: #f2f3ee; --ink-soft: #b9c0b9;
+      --fairway: #7bbb99; --fairway-soft: #1e2b24; --line: #2a2f2a;
+      --err: #e08a78; --err-soft: #2b1c19;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--fairway); }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  .mark { width: 46px; height: 46px; border-radius: 10px; background: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+  .mark svg { width: 22px; height: 22px; }
+  h1 { font-family: var(--display); font-weight: 700; font-size: 1.6rem; margin: 0 0 8px; text-wrap: balance; }
+  .sub { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); margin-bottom: 32px; }
+  .field { margin-bottom: 22px; }
+  .field .label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fairway); display: block; margin-bottom: 8px; }
+  .box { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
+  .box code { font-family: var(--mono); font-size: 0.88rem; word-break: break-all; flex: 1; }
+  button.copy { font-family: var(--display); font-weight: 600; font-size: 0.8rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 6px; padding: 8px 12px; cursor: pointer; flex: none; }
+  button.copy:hover { border-color: var(--fairway); color: var(--fairway); }
+  .empty { color: var(--ink-soft); font-style: italic; }
+  .error-box { background: var(--err-soft); border: 1px solid var(--err); border-radius: 10px; padding: 16px 18px; color: var(--err); }
+  footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="20" x2="50" y2="80" stroke="white" stroke-width="6"/>
+        <circle cx="50" cy="80" r="6" fill="white"/>
+        <path d="M50 20 L74 32 L50 44 Z" fill="white"/>
+      </svg>
+    </div>
+    <h1 id="heading">Authorization received</h1>
+    <div class="sub">Golf Culture &middot; TikTok Login Kit callback</div>
+
+    <div id="success-fields">
+      <div class="field">
+        <span class="label">Authorization code</span>
+        <div class="box">
+          <code id="code-val">—</code>
+          <button class="copy" onclick="copyField('code-val')">Copy</button>
+        </div>
+      </div>
+      <div class="field">
+        <span class="label">State</span>
+        <div class="box">
+          <code id="state-val">—</code>
+          <button class="copy" onclick="copyField('state-val')">Copy</button>
+        </div>
+      </div>
+      <p class="sub">Copy the authorization code above and send it over — that's what gets exchanged for the real access token.</p>
+    </div>
+
+    <div id="error-fields" style="display:none;">
+      <div class="error-box">
+        <strong id="error-code">—</strong>
+        <p id="error-desc" style="margin:8px 0 0;"></p>
+      </div>
+    </div>
+
+    <footer>golfculture.github.io/golf-culture-sites/oauth-callback.html</footer>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+    const error = params.get('error');
+    const errorDesc = params.get('error_description');
+
+    function setField(id, value) {
+      const el = document.getElementById(id);
+      if (value) {
+        el.textContent = value;
+      } else {
+        el.textContent = 'none provided';
+        el.classList.add('empty');
+      }
+    }
+
+    if (error) {
+      document.getElementById('heading').textContent = 'Authorization failed';
+      document.getElementById('success-fields').style.display = 'none';
+      document.getElementById('error-fields').style.display = 'block';
+      document.getElementById('error-code').textContent = error;
+      document.getElementById('error-desc').textContent = errorDesc || '';
+    } else {
+      setField('code-val', code);
+      setField('state-val', state);
+    }
+
+    function copyField(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).catch(() => {});
+    }
+  </script>
+</body>
+</html>
